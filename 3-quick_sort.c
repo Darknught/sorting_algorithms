@@ -52,7 +52,7 @@ int pi;
 
 if (low < high)
 {
-pi = partition(array, low, high);
+pi = partition(array, low, high, size);
 quick_sort_helper(array, low, pi - 1, size);
 quick_sort_helper(array, pi + 1, high, size);
 }
