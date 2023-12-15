@@ -22,20 +22,19 @@ void swap(int *x, int *y)
  */
 void bubble_sort(int *array, size_t size)
 {
-	int swaped;
+	int swapped;
 	size_t i;
 
 	do {
-		swaped = 0;
+		swapped = 0;
 		for (i = 1; i < size; i++)
 		{
 			if (array[i - 1] > array[i])
 			{
 				swap(&array[i - 1], &array[i]);
 				print_array(array, size);
-
-				swaped = 1;
+				swapped = 1;
 			}
 		}
-	} while (swaped);
+	} while (swapped);
 }
