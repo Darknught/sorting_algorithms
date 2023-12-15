@@ -18,10 +18,10 @@ void swap(int *a, int *b)
  * @array: Pointer to the array to be partitioned.
  * @low: Starting index of the partition.
  * @high: Ending index of the partition.
- *
+ * @size: size
  * Return: The index of the pivot element.
  */
-int partition(int *array, int low, int high)
+int partition(int *array, int low, int high, size_t size)
 {
 int pivot = array[high];
 int i = (low - 1), j;
@@ -44,16 +44,17 @@ return (i + 1);
  * @array: array of items
  * @low: Starting index of the array to be sorted.
  * @high: Ending index of the array to be sorted.
+ * @size: size
  */
-void quick_sort_helper(int *array, int low, int high)
+void quick_sort_helper(int *array, int low, int high, size_t size)
 {
 int pi;
 
 if (low < high)
 {
 pi = partition(array, low, high);
-quick_sort_helper(array, low, pi - 1);
-quick_sort_helper(array, pi + 1, high);
+quick_sort_helper(array, low, pi - 1, size);
+quick_sort_helper(array, pi + 1, high, size);
 }
 }
 
@@ -65,5 +66,5 @@ quick_sort_helper(array, pi + 1, high);
  */
 void quick_sort(int *array, size_t size)
 {
-quick_sort_helper(array, 0, size - 1);
+quick_sort_helper(array, 0, size - 1, size);
 }
