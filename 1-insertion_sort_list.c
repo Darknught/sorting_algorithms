@@ -49,6 +49,7 @@ void insertion_sort_list(listint_t **list)
 			current->prev = temp;
 			temp->next = current;
 		}
+		printf("Pass: ");
 		print_list(sorted);
 	}
 	*list = sorted;
