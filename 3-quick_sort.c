@@ -39,7 +39,7 @@ print_array(array, size);
 return (i + 1);
 }
 
-/*
+/**
  * quick_sort_helper - quick sort helper function
  * @array: array of items
  * @low: Starting index of the array to be sorted.
