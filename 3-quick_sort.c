@@ -35,6 +35,7 @@ swap(&array[i], &array[j]);
 }
 }
 swap(&array[i + 1], &array[high]);
+print_array(array, size);
 return (i + 1);
 }
 
