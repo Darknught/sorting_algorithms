@@ -9,7 +9,7 @@ void insertion_sort_list(listint_t **list);
  */
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *sorted, *temp, *current;
+	listint_t *sorted, *temp, *current, *original;
 
 	if (list == NULL || *list == NULL || (*list)->next == NULL)
 	{
@@ -17,11 +17,12 @@ void insertion_sort_list(listint_t **list)
 	}
 
 	sorted = NULL;
+	original = *list;
 
-	while (*list != NULL)
+	while (original != NULL)
 	{
-		current = *list;
-		*list = current->next;
+		current = original;
+		original = original->next;
 
 		if (sorted == NULL || current->n <= sorted->n)
 		{
@@ -49,8 +50,7 @@ void insertion_sort_list(listint_t **list)
 			current->prev = temp;
 			temp->next = current;
 		}
-		printf("Pass: ");
-		print_list(sorted);
+		print_list(*list);
 	}
 	*list = sorted;
 }
