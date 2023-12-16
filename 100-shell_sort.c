@@ -28,8 +28,7 @@ void shell_sort(int *array, size_t size)
 			}
 			array[j] = temp;
 		}
-		gap = (gap - 1) / 3;
-		if (gap > 0)
-			print_array(array, size);
+		print_array(array, size);
+		gap = (gap - 1) / 3;;
 	}
 }
