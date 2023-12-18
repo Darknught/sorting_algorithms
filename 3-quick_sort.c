@@ -70,6 +70,7 @@ quick_sort_helper(array, pi + 1, high, size);
  * quick_sort - Sorts an integer array
  * in ascending order using Quick Sort.
  * @array: Pointer to the integer array to be sorted.
+ * @size: array size
  */
 void quick_sort(int *array, size_t size)
 {
