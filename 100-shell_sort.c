@@ -29,7 +29,7 @@ void shell_sort(int *array, size_t size)
 			if (array[j] != temp)
 				array[j] = temp;
 		}
-		print_array(array, size);
 		gap = (gap - 1) / 3;
+		print_array(array, size);
 	}
 }
