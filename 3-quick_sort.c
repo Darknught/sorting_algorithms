@@ -1,7 +1,5 @@
 #include "sort.h"
 
-size_t myVal = 0;
-
 /**
  * swap - Swaps two integers.
  * @a: Pointer to the first integer.
@@ -21,9 +19,10 @@ int temp = *a;
  * @array: Pointer to the array to be partitioned.
  * @low: Starting index of the partition.
  * @high: Ending index of the partition.
+ * @size: array size
  * Return: The index of the pivot element.
  */
-int partition(int *array, int low, int high)
+int partition(int *array, int low, int high, size_t size)
 {
 int pivot = array[high];
 int i = low - 1, j;
@@ -36,14 +35,14 @@ i++;
 if (array[i] != array[j])
 {
 swap(&array[i], &array[j]);
-print_array(array, myVal);
+print_array(array, size);
 }
 }
 }
 if (array[i + 1] != array[high])
 {
 swap(&array[i + 1], &array[high]);
-print_array(array, myVal);
+print_array(array, size);
 }
 return (i + 1);
 }
@@ -53,16 +52,17 @@ return (i + 1);
  * @array: array of items
  * @low: Starting index of the array to be sorted.
  * @high: Ending index of the array to be sorted.
+ * @size: array size
  */
-void quick_sort_helper(int *array, int low, int high)
+void quick_sort_helper(int *array, int low, int high, size_t size)
 {
 int pi;
 
 if (low < high)
 {
-pi = partition(array, low, high);
-quick_sort_helper(array, low, pi - 1);
-quick_sort_helper(array, pi + 1, high);
+pi = partition(array, low, high, size);
+quick_sort_helper(array, low, pi - 1, size);
+quick_sort_helper(array, pi + 1, high, size);
 }
 }
 
@@ -73,6 +73,5 @@ quick_sort_helper(array, pi + 1, high);
  */
 void quick_sort(int *array, size_t size)
 {
-myVal = size;
-quick_sort_helper(array, 0, size - 1);
+quick_sort_helper(array, 0, size - 1, size);
 }
