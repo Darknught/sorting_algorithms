@@ -34,8 +34,6 @@ void counting_sort(int *array, size_t size)
 	for (x = 0; x < size; x++)
 		counting[array[x]]++;
 
-	print_array(counting, max);
-
 	for (x = 1; x < max; x++)
 		counting[x] += counting[x - 1];
 
@@ -53,6 +51,8 @@ void counting_sort(int *array, size_t size)
 	}
 	for (x = 0; x < size; x++)
 		array[x] = sorted[x];
+
+	print_array(array, size);
 
 
 	free(counting);
