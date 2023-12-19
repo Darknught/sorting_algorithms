@@ -9,7 +9,7 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	int *counting;
+	int k, l, *counting;
 	size_t x, y, max = 0;
 
 	if (array == NULL || size < 2)
@@ -31,6 +31,18 @@ void counting_sort(int *array, size_t size)
 
 	for (x = 0; x < size; x++)
 		counting[array[x]]++;
+
+	
+	for (k = 0; k < (int)max; k++)
+	{
+		for (l = 0; l < counting[k]; l++)
+		{
+			printf("%d", (int)k);
+			if (k < (int)max - 1 || (int)l < counting[k] - 1)
+				printf(", ");
+		}
+	}
+	printf("\n");
 
 	y = 0;
 	for (x = 0; x < max; x++)
