@@ -9,7 +9,7 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	int k, l, *counting;
+	int *counting, *sorted;
 	size_t x, y, max = 0;
 
 	if (array == NULL || size < 2)
@@ -32,28 +32,25 @@ void counting_sort(int *array, size_t size)
 	for (x = 0; x < size; x++)
 		counting[array[x]]++;
 
-	
-	for (k = 0; k < (int)max; k++)
-	{
-		for (l = 0; l < counting[k]; l++)
-		{
-			printf("%d", (int)k);
-			if (k < (int)max - 1 || (int)l < counting[k] - 1)
-				printf(", ");
-		}
-	}
-	printf("\n");
+	for (x = 1; x < max; x++)
+		counting[x] += counting[x - 1];
 
-	y = 0;
-	for (x = 0; x < max; x++)
+	sorted = malloc(size * sizeof(int));
+	if (sorted == NULL)
 	{
-		while (counting[x] > 0)
-		{
-			array[y] = x;
-			y++;
-			counting[x]--;
-		}
+		free(counting);
+		return;
 	}
+
+	for (y = size - 1; y < size; y--)
+	{
+		sorted[counting[array[y]] - 1] = array[y];
+		counting[array[y]]--;
+	}
+	for (x = 0; x < size; x++)
+		array[x] = sorted[x];
+
 
 	free(counting);
+	free(sorted);
 }
