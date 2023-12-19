@@ -9,41 +9,39 @@
  */
 void counting_sort(int *array, size_t size)
 {
-	int *counting, max, i;
-	size_t x, j;
+	int *counting;
+	size_t x, y, max = 0;
 
 	if (array == NULL || size < 2)
 		return;
 
-	max = array[0];
-
-	for (x = 1; x < size; x++)
+	for (x = 0; x < size; x++)
 	{
-		if (array[x] > max)
-			max = array[x];
+		if ((size_t)array[x] > max)
+			max = (size_t)array[x];
 	}
+	max++;
 
-	counting = malloc((max + 1) * sizeof(int));
+	counting = malloc(max * sizeof(int));
 	if (counting == NULL)
 		return;
 
-	for (i = 0; i <= max; i++)
-		counting[i] = 0;
+	for (x = 0; x < max; x++)
+		counting[x] = 0;
 
 	for (x = 0; x < size; x++)
 		counting[array[x]]++;
 
-	print_array(counting, max + 1);
-
-	j = 0;
-	for (i = 0; i <= max; i++)
+	y = 0;
+	for (x = 0; x < max; x++)
 	{
-		while (counting[i] > 0)
+		while (counting[x] > 0)
 		{
-			array[j] = i;
-			j++;
-			counting[i]--;
+			array[y] = x;
+			y++;
+			counting[x]--;
 		}
 	}
+
 	free(counting);
 }
